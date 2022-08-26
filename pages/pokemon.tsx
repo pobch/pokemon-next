@@ -34,6 +34,19 @@ function Pokemon({
   }, [pokemons.length, setPokemons])
   return (
     <div>
+      <div
+        style={{
+          position: 'sticky',
+          top: 0,
+          backgroundColor: 'black',
+          color: 'white',
+          padding: '1rem 2rem',
+        }}
+      >
+        <Link href={'/'}>
+          <a>Home Page</a>
+        </Link>
+      </div>
       <h1>Pokemon List</h1>
       {data.results.map((poke) => {
         const id = poke.url.split('/').at(-2)
@@ -41,9 +54,9 @@ function Pokemon({
           <div key={id}>
             <h2>
               <Link href={`/pokemon/${id}`}>
-                <span>
+                <a>
                   {id}. {poke.name}
-                </span>
+                </a>
               </Link>
             </h2>
           </div>
@@ -55,9 +68,9 @@ function Pokemon({
           <div key={id}>
             <h2>
               <Link href={`/pokemon/${id}`}>
-                <span>
+                <a>
                   {id}. {poke.name}
-                </span>
+                </a>
               </Link>
             </h2>
           </div>

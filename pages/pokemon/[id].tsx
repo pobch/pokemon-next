@@ -24,7 +24,13 @@ function Detail({ data }: InferGetServerSidePropsType<typeof getServerSideProps>
   return (
     <div>
       <h1>{data.name}</h1>
-      <Link href={'/pokemon'}>Go to List</Link>
+      <Link href={'/'}>
+        <a>Home Page</a>
+      </Link>
+      {' | '}
+      <Link href={'/pokemon'}>
+        <a>List Page</a>
+      </Link>
       <div>
         <Image
           src={data.sprites.other['official-artwork'].front_default}
@@ -123,7 +129,13 @@ function Detail({ data }: InferGetServerSidePropsType<typeof getServerSideProps>
         veniam cupiditate, voluptas odit sapiente in aspernatur veritatis labore! Quam soluta
         asperiores a itaque non?
       </p>
-      <Link href={'/pokemon'}>Go to List</Link>
+      <Link href={'/'}>
+        <a>Home Page</a>
+      </Link>
+      {' | '}
+      <Link href={'/pokemon'}>
+        <a>List Page</a>
+      </Link>
     </div>
   )
 }
