@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { InferGetServerSidePropsType } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
-import { SetStateAction, useEffect, useState } from 'react'
+import { SetStateAction, useEffect } from 'react'
 
 export type ResData = {
   count: number
@@ -34,7 +35,11 @@ function Pokemon({
   }, [pokemons.length, setPokemons])
   return (
     <div>
-      <div
+      <Head>
+        <title>List</title>
+      </Head>
+
+      <nav
         style={{
           position: 'sticky',
           top: 0,
@@ -46,36 +51,41 @@ function Pokemon({
         <Link href={'/'}>
           <a>Home Page</a>
         </Link>
-      </div>
-      <h1>Pokemon List</h1>
-      {data.results.map((poke) => {
-        const id = poke.url.split('/').at(-2)
-        return (
-          <div key={id}>
-            <h2>
+      </nav>
+
+      <main>
+        <h1>Pokemon List</h1>
+        {data.results.map((poke) => {
+          const id = poke.url.split('/').at(-2)
+          return (
+            <div
+              key={id}
+              style={{ fontSize: '1.5rem', padding: '1rem 1.5rem', color: 'cornflowerblue' }}
+            >
               <Link href={`/pokemon/${id}`}>
                 <a>
-                  {id}. {poke.name}
+                  {id}. {poke.name} 🔗
                 </a>
               </Link>
-            </h2>
-          </div>
-        )
-      })}
-      {pokemons.map((poke) => {
-        const id = poke.url.split('/').at(-2)
-        return (
-          <div key={id}>
-            <h2>
+            </div>
+          )
+        })}
+        {pokemons.map((poke) => {
+          const id = poke.url.split('/').at(-2)
+          return (
+            <div
+              key={id}
+              style={{ fontSize: '1.5rem', padding: '1rem 1.5rem', color: 'lightseagreen' }}
+            >
               <Link href={`/pokemon/${id}`}>
                 <a>
-                  {id}. {poke.name}
+                  {id}. {poke.name} 🔗
                 </a>
               </Link>
-            </h2>
-          </div>
-        )
-      })}
+            </div>
+          )
+        })}
+      </main>
     </div>
   )
 }
